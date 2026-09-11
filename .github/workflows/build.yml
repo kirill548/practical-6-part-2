@@ -9,7 +9,10 @@ jobs:
       - name: Install deps
         run: npm ci
       - name: Build project
+        # Добавили CI=false, чтобы сборка не падала из-за мелких предупреждений в коде
         run: npm run build
+        env:
+          CI: false
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:

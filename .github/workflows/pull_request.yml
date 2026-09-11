@@ -1,0 +1,15 @@
+name: Print Pull Request Context
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["master"]
+  pull_request:
+    types: [opened, edited, reopened, closed]
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print context
+        run: echo "${{ toJson(github.event) }}"
