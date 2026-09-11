@@ -1,8 +1,11 @@
 name: Print Pull Request Context
-on: workflow_dispatch
+on:
+  workflow_dispatch:
 jobs:
   print:
     runs-on: ubuntu-latest
     steps:
       - name: Print context
-        run: echo "${{ github }}"
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
