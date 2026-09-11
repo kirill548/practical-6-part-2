@@ -2,8 +2,10 @@ name: Print Pull Request Context
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["master", "test-pr-branch"]
   pull_request:
-    types: [opened, edited, reopened]
+    types: [opened, edited, reopened, closed]
 
 jobs:
   print:
